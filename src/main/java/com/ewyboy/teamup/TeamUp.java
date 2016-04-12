@@ -13,7 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import java.util.concurrent.TimeUnit;
 
-@Mod(modid = Reference.ModInfo.ModID, name = Reference.ModInfo.ModName, version = Reference.ModInfo.BuildVersion, acceptedMinecraftVersions = "["+ Reference.ModInfo.MinecraftVersion+"]")
+@Mod(modid = Reference.ModInfo.ModID, name = Reference.ModInfo.ModName, version = Reference.ModInfo.BuildVersion,acceptableRemoteVersions = "*", acceptedMinecraftVersions = "["+ Reference.ModInfo.MinecraftVersion+"]")
 public class TeamUp {
 
     @Mod.Instance(Reference.ModInfo.ModID)

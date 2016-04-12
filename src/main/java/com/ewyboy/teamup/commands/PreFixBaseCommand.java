@@ -27,6 +27,11 @@ public class PreFixBaseCommand extends CommandBase {
     }
 
     @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true;
+    }
+
+    @Override
     public void processCommand(ICommandSender commandSender, String[] args) {
         if (args.length >= 1) {
             for (CommandBase command : modCommands) {

@@ -1,6 +1,5 @@
 package com.ewyboy.teamup.commands;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
@@ -8,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
 
@@ -32,6 +32,11 @@ public class CommandAddPlayer extends CommandBase {
     }
 
     @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true;
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
         String playerName = args[1];
 
@@ -45,8 +50,8 @@ public class CommandAddPlayer extends CommandBase {
                 targetNBT.setBoolean(hasTeam, true);
                 targetNBT.setString(teamNameNBT, playerNBT.getString(teamNameNBT));
                 targetNBT.setString(teamColorNBT, playerNBT.getString(teamColorNBT));
-                player.addChatMessage(new ChatComponentText(ChatFormatting.ITALIC + playerName + " was added to your team: " + ChatFormatting.getByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT)));
-                target.addChatMessage(new ChatComponentText(ChatFormatting.ITALIC + player.getCommandSenderName() + " added you to the team: " + ChatFormatting.getByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT)));
+                player.addChatMessage(new ChatComponentText(EnumChatFormatting.ITALIC + playerName + " was added to your team: " + EnumChatFormatting.getValueByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT)));
+                target.addChatMessage(new ChatComponentText(EnumChatFormatting.ITALIC + player.getCommandSenderName() + " added you to the team: " + EnumChatFormatting.getValueByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT)));
             } else {
                 throw new WrongUsageException(ErrorMessages.notTeamLeader);
             }

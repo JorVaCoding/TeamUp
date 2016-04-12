@@ -1,13 +1,13 @@
 package com.ewyboy.teamup.events;
 
 import com.ewyboy.teamup.utility.Reference;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 
 import java.util.List;
@@ -32,9 +32,9 @@ public class TeamUpEventHandler {
                 List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
                 for (int i = 0; i < + players.size(); i++) {
                         EntityPlayer target = (EntityPlayer) players.get(i);
-                        ChatFormatting color = ChatFormatting.getByName(playerNBT.getString(teamColorNBT));
-                        if (color == null) color = ChatFormatting.WHITE;
-                        String chatText = "["+ color + playerNBT.getString(teamNameNBT) + ChatFormatting.WHITE + "] " + "<" + player.getDisplayName() + "> " + event.message;
+                        EnumChatFormatting color = EnumChatFormatting.getValueByName(playerNBT.getString(teamColorNBT));
+                        if (color == null) color = EnumChatFormatting.WHITE;
+                        String chatText = "["+ color + playerNBT.getString(teamNameNBT) + EnumChatFormatting.WHITE + "] " + "<" + player.getDisplayName() + "> " + event.message;
                         target.addChatMessage(new ChatComponentTranslation(chatText));
                 }
             }

@@ -1,7 +1,6 @@
 package com.ewyboy.teamup.commands;
 
 import com.ewyboy.teamup.utility.Reference;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
@@ -9,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.List;
 
@@ -31,6 +31,11 @@ public class CommandDeleteTeam extends CommandBase {
     }
 
     @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true;
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
         String teamName = args[1];
 
@@ -46,7 +51,7 @@ public class CommandDeleteTeam extends CommandBase {
                     NBTTagCompound targetNBT = target.getEntityData();
                     if (targetNBT.getBoolean(hasTeam)) {
                         if (targetNBT.getString(teamNameNBT).equals(teamName)) {
-                            target.addChatComponentMessage(new ChatComponentText(ChatFormatting.getByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT) + " just got deleted by: " + player.getDisplayName()));
+                            target.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.getValueByName(playerNBT.getString(teamColorNBT)) + playerNBT.getString(teamNameNBT) + " just got deleted by: " + player.getDisplayName()));
                             if (targetNBT.getBoolean(isTeamLeader)) targetNBT.setBoolean(isTeamLeader, false);
                             targetNBT.setBoolean(hasTeam, false);
                             targetNBT.setString(teamNameNBT, "unteamed");

@@ -30,6 +30,11 @@ public class CommandCreateTeam extends CommandBase {
     }
 
     @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true;
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
         String teamName = args[1];
 

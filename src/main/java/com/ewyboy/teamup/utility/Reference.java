@@ -1,6 +1,6 @@
 package com.ewyboy.teamup.utility;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import net.minecraft.util.EnumChatFormatting;
 
 public class Reference {
 
@@ -51,7 +51,7 @@ public class Reference {
         public static final String leaveTeam    = "Removes You From Current Team"       + spacing + "Args: None"      + spacing + "Access: All";
     }
 
-    private static final String error = ChatFormatting.RED + "Error: ";
+    private static final String error = EnumChatFormatting.RED + "Error: ";
 
     public static final class ErrorMessages {
         public static final String alreadyInTeam1 = error + "You are already in an existing team.";

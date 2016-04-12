@@ -1,7 +1,6 @@
 package com.ewyboy.teamup.commands;
 
 import com.ewyboy.teamup.utility.Reference;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
@@ -9,6 +8,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +34,11 @@ public class CommandTeamChat extends CommandBase {
     }
 
     @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return true;
+    }
+
+    @Override
     public void processCommand(ICommandSender sender, String[] args) {
         EntityPlayer player = getCommandSenderAsPlayer(sender);
         NBTTagCompound playerNBT = player.getEntityData();
@@ -47,9 +52,9 @@ public class CommandTeamChat extends CommandBase {
 
                 if (targetNBT.getBoolean(Reference.TeamData.hasTeam)) {
                     if (targetNBT.getString(Reference.TeamData.teamNameNBT).equals(playerNBT.getString(Reference.TeamData.teamNameNBT))) {
-                        ChatFormatting color = ChatFormatting.getByName(playerNBT.getString(teamColorNBT));
-                        if (color == null) color = ChatFormatting.WHITE;
-                        String chatText = "["+ color + playerNBT.getString(teamNameNBT) + ChatFormatting.WHITE +"] " + "<" + player.getDisplayName() + "> " + color + Arrays.toString(args).replace(",", "").replace("[", "").replace("]", "").trim();
+                        EnumChatFormatting color = EnumChatFormatting.getValueByName(playerNBT.getString(teamColorNBT));
+                        if (color == null) color = EnumChatFormatting.WHITE;
+                        String chatText = "["+ color + playerNBT.getString(teamNameNBT) + EnumChatFormatting.WHITE +"] " + "<" + player.getDisplayName() + "> " + color + Arrays.toString(args).replace(",", "").replace("[", "").replace("]", "").trim();
                         target.addChatMessage(new ChatComponentTranslation(chatText));
                     }
                 }

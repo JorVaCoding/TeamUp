@@ -1,7 +1,6 @@
 package com.ewyboy.teamup.commands;
 
 import com.ewyboy.teamup.utility.Reference;
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
@@ -9,15 +8,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.mojang.realmsclient.gui.ChatFormatting.*;
-
 public class CommandSetColor extends CommandBase {
 
-    private static List<ChatFormatting> teamColors = new ArrayList<ChatFormatting>();
+    private static List<EnumChatFormatting> teamColors = new ArrayList<EnumChatFormatting>();
     private static List<String> colors = new ArrayList<String>();
 
     @Override
@@ -50,15 +48,15 @@ public class CommandSetColor extends CommandBase {
         List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
 
         if (playerNBT.getBoolean(Reference.TeamData.isTeamLeader)) {
-            for (ChatFormatting chatFormatting : teamColors) {
-                if (selectedColor.contains(chatFormatting.getName())) {
+            for (EnumChatFormatting chatFormatting : teamColors) {
+                if (selectedColor.contains(chatFormatting.name())) {
                     for (int i = 0; i < + players.size(); i++) {
                         EntityPlayer target = (EntityPlayer) players.get(i);
                         NBTTagCompound targetNBT = target.getEntityData();
                         if (targetNBT.getBoolean(Reference.TeamData.hasTeam)) {
                             if (targetNBT.getString(Reference.TeamData.teamNameNBT).equals(playerNBT.getString(Reference.TeamData.teamNameNBT))) {
                                 target.getEntityData().setString(Reference.TeamData.teamColorNBT, selectedColor);
-                                target.addChatMessage(new ChatComponentText(ChatFormatting.getByName(selectedColor) + selectedColor + ChatFormatting.WHITE + " has been set for team " + ChatFormatting.getByName(selectedColor) + playerNBT.getString(Reference.TeamData.teamNameNBT)));
+                                target.addChatMessage(new ChatComponentText(EnumChatFormatting.getValueByName(selectedColor) + selectedColor + EnumChatFormatting.WHITE + " has been set for team " + EnumChatFormatting.getValueByName(selectedColor) + playerNBT.getString(Reference.TeamData.teamNameNBT)));
                             }
                         }
                     }
@@ -75,25 +73,25 @@ public class CommandSetColor extends CommandBase {
         if (args.length == 2) {
             return getListOfStringsFromIterableMatchingLastWord(args, colors);
         } else if (args.length >= 3) {
-            for (ChatFormatting chatFormatting : teamColors) {
-                if (chatFormatting.getName().equalsIgnoreCase(args[1])) {
+            for (EnumChatFormatting chatFormatting : teamColors) {
+                if (chatFormatting.name().equalsIgnoreCase(args[1])) {
                     return this.addTabCompletionOptions(commandSender, args);
                 }
             }
         } return null;
     } static {
-        teamColors.add(RED);
-        teamColors.add(DARK_RED);
-        teamColors.add(BLUE);
-        teamColors.add(DARK_BLUE);
-        teamColors.add(GREEN);
-        teamColors.add(DARK_GREEN);
-        teamColors.add(YELLOW);
-        teamColors.add(GOLD);
-        teamColors.add(AQUA);
-        teamColors.add(DARK_AQUA);
-        teamColors.add(LIGHT_PURPLE);
-        teamColors.add(DARK_PURPLE);
-        for (ChatFormatting chatFormatting : teamColors) colors.add(chatFormatting.getName());
+        teamColors.add(EnumChatFormatting.RED);
+        teamColors.add(EnumChatFormatting.DARK_RED);
+        teamColors.add(EnumChatFormatting.BLUE);
+        teamColors.add(EnumChatFormatting.DARK_BLUE);
+        teamColors.add(EnumChatFormatting.GREEN);
+        teamColors.add(EnumChatFormatting.DARK_GREEN);
+        teamColors.add(EnumChatFormatting.YELLOW);
+        teamColors.add(EnumChatFormatting.GOLD);
+        teamColors.add(EnumChatFormatting.AQUA);
+        teamColors.add(EnumChatFormatting.DARK_AQUA);
+        teamColors.add(EnumChatFormatting.LIGHT_PURPLE);
+        teamColors.add(EnumChatFormatting.DARK_PURPLE);
+        for (EnumChatFormatting chatFormatting : teamColors) colors.add(chatFormatting.name());
     }
 }
