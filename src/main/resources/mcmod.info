@@ -1,0 +1,16 @@
+[
+    {
+      "modid": "teamup",
+      "name": "TeamUp",
+      "description": "",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "",
+      "updateUrl": "",
+      "authorList": ["EwyBoy"],
+      "credits": "",
+      "logoFile": "",
+      "screenshots": [],
+      "dependencies": []
+    }
+]
