@@ -13,7 +13,6 @@ import net.minecraftforge.event.ServerChatEvent;
 import java.util.List;
 
 import static com.ewyboy.teamup.utility.Reference.TeamData.*;
-
 public class TeamUpEventHandler {
 
     private static final String chatPrefix = "team:";

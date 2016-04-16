@@ -13,7 +13,7 @@ import net.minecraft.util.EnumChatFormatting;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandSetColor extends CommandBase {
+class CommandSetColor extends CommandBase {
 
     private static List<EnumChatFormatting> teamColors = new ArrayList<EnumChatFormatting>();
     private static List<String> colors = new ArrayList<String>();

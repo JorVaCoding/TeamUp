@@ -16,7 +16,7 @@ import static com.ewyboy.teamup.utility.Reference.TeamData.*;
 import static com.ewyboy.teamup.utility.Reference.TeamData.teamColorNBT;
 import static com.ewyboy.teamup.utility.Reference.TeamData.teamNameNBT;
 
-public class CommandRemovePlayer extends CommandBase {
+class CommandRemovePlayer extends CommandBase {
 
     @Override
     public String getCommandName() {
