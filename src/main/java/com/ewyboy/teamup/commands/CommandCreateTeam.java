@@ -12,7 +12,7 @@ import net.minecraft.util.ChatComponentText;
 import static com.ewyboy.teamup.utility.Reference.TeamData.hasTeam;
 import static com.ewyboy.teamup.utility.Reference.TeamData.isTeamLeader;
 
-public class CommandCreateTeam extends CommandBase {
+class CommandCreateTeam extends CommandBase {
 
     @Override
     public String getCommandName() {

@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.ewyboy.teamup.utility.Reference.TeamData.*;
 
-public class CommandLeaveTeam extends CommandBase {
+class CommandLeaveTeam extends CommandBase {
 
     @Override
     public String getCommandName() {

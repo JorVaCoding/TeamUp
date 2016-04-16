@@ -14,11 +14,6 @@ public class Reference {
         public static final String MinecraftVersion = "1.7.10";
     }
 
-    public static final class Path {
-        public static final String clientProxyPath = "com.ewyboy.teamup.proxies.ClientProxy";
-        public static final String commonProxyPath = "com.ewyboy.teamup.proxies.CommonProxy";
-    }
-
     public static final class TeamData {
         public static final String isTeamLeader = "isTeamLeader";
         public static final String hasTeam = "hasTeam";
@@ -32,12 +27,12 @@ public class Reference {
 
 
     public static final class Commands {
-    public static final String createTeam = "CreateTeam";
-    public static final String deleteTeam = "DeleteTeam";
-    public static final String addPlayer = "AddPlayer";
-    public static final String removePlayer = "RemovePlayer";
-    public static final String setColor = "SetColor";
-    public static final String leaveTeam = "LeaveTeam";
+        public static final String createTeam = "CreateTeam";
+        public static final String deleteTeam = "DeleteTeam";
+        public static final String addPlayer = "AddPlayer";
+        public static final String removePlayer = "RemovePlayer";
+        public static final String setColor = "SetColor";
+        public static final String leaveTeam = "LeaveTeam";
     }
 
     private static final String spacing = " | ";

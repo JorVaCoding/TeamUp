@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.ewyboy.teamup.utility.Reference.TeamData.*;
 
-public class CommandDeleteTeam extends CommandBase {
+class CommandDeleteTeam extends CommandBase {
     @Override
     public String getCommandName() {
         return Reference.Commands.deleteTeam;

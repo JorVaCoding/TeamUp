@@ -14,7 +14,7 @@ import java.util.List;
 import static com.ewyboy.teamup.utility.Reference.*;
 import static com.ewyboy.teamup.utility.Reference.TeamData.*;
 
-public class CommandAddPlayer extends CommandBase {
+class CommandAddPlayer extends CommandBase {
 
     @Override
     public int getRequiredPermissionLevel() {
@@ -38,12 +38,14 @@ public class CommandAddPlayer extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
+
         String playerName = args[1];
 
         EntityPlayer player = getCommandSenderAsPlayer(sender);
         NBTTagCompound playerNBT = player.getEntityData();
         EntityPlayer target = sender.getEntityWorld().getPlayerEntityByName(playerName);
         NBTTagCompound targetNBT = target.getEntityData();
+
 
         if (!targetNBT.getBoolean(hasTeam)) {
             if (playerNBT.getBoolean(isTeamLeader)) {
@@ -58,6 +60,7 @@ public class CommandAddPlayer extends CommandBase {
         } else {
             throw new WrongUsageException(ErrorMessages.alreadyInTeam2);
         }
+
     }
 
     @Override
